@@ -1,15 +1,22 @@
 package _05_typing_tutor;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TypingTuter {
+public class TypingTuter implements KeyListener {
 
 
 	char currentLetter;
+	JFrame frame= new JFrame();
+	JPanel panel= new JPanel();
+	JLabel label= new JLabel();
+	boolean correctKey;
 	
 	
 	public static void main(String[] args) {
@@ -18,9 +25,7 @@ public class TypingTuter {
 		
 		new TypingTuter().setup();
 		
-		
-		
-		
+	
 		
 	}
 	
@@ -30,29 +35,51 @@ public class TypingTuter {
 	}
 	
 	void setup() {
+
 		
-		
-		
-		
-		currentLetter = generateRandomLetter(); 
-		
-		JFrame frame= new JFrame();
-		JPanel panel= new JPanel();
-		JLabel label= new JLabel();
 		label.setFont(label.getFont().deriveFont(28.0f));
 		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setText(currentLetter+"");
-		label.setVisible(true);
+		frame.addKeyListener(this);
 		panel.add(label);
-		panel.setVisible(true);
 		frame.add(panel);
 		frame.setVisible(true);
+		labelThing();
+		
+	
+		
+	}
+	
+	void labelThing() {
+		currentLetter = generateRandomLetter(); 
+		label.setText(currentLetter+"");
+		frame.pack();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 		
-		
-		
-		
-		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("You pressed: " + e.getKeyChar());
+		if (currentLetter == e.getKeyChar()) {
+			System.out.println("CORRECT");
+			panel.setBackground(Color.GREEN);
+		}
+		else {
+			System.out.println("INCORRECT");
+			panel.setBackground(Color.RED);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		labelThing();
 	}
 	
 	
