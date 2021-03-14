@@ -3,10 +3,12 @@ package _05_typing_tutor;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Date;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TypingTuter implements KeyListener {
@@ -17,6 +19,7 @@ public class TypingTuter implements KeyListener {
 	JPanel panel= new JPanel();
 	JLabel label= new JLabel();
 	boolean correctKey;
+	
 	
 	
 	public static void main(String[] args) {
@@ -37,11 +40,14 @@ public class TypingTuter implements KeyListener {
 	void setup() {
 
 		
+		
+		
 		label.setFont(label.getFont().deriveFont(28.0f));
 		label.setHorizontalAlignment(JLabel.CENTER);
 		frame.addKeyListener(this);
 		panel.add(label);
 		frame.add(panel);
+		
 		frame.setVisible(true);
 		labelThing();
 		
