@@ -17,12 +17,13 @@ public class Calculator implements ActionListener {
 	JFrame frame= new JFrame();
 	JPanel panel= new JPanel();
 	JLabel label= new JLabel();
-	JTextField textField1= new JTextField();
-	JTextField textField2= new JTextField();
+	JTextField textField1= new JTextField(20);
+	JTextField textField2= new JTextField(20);
 	JButton button1= new JButton();
 	JButton button2= new JButton();
 	JButton button3= new JButton();
 	JButton button4=new JButton();
+	
 	
 	
 	public void calculate() {
@@ -43,13 +44,13 @@ public class Calculator implements ActionListener {
 		button4.addActionListener(this);
 		panel.add(textField1);
 		panel.add(textField2);
+		panel.add(label);
 		frame.pack();
 		
 		
-		textField1.toString();
-		number1= Integer.parseInt(textField1);
-		textField2.toString();
-		number2= Integer.parseInt(textField2);
+		
+		
+		
 		
 		
 		
@@ -62,6 +63,47 @@ public class Calculator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if (button1 == e.getSource()) {
+			String Stext= textField1.getText();
+			String Stext2= textField2.getText();
+			int text1= Integer.parseInt(Stext);
+			int text2= Integer.parseInt(Stext2);
+			int sum= text1+ text2;
+			label.setText("sum: " + sum);
+			frame.pack();
+		}
+		else if (button2 == e.getSource()) {
+			String Stext= textField1.getText();
+			String Stext2= textField2.getText();
+			int text1= Integer.parseInt(Stext);
+			int text2= Integer.parseInt(Stext2);
+			int difference= text1- text2;
+			label.setText("difference: " + difference);
+			frame.pack();
+			
+			
+		}
+		else if (button3 == e.getSource()) {
+			String Stext= textField1.getText();
+			String Stext2= textField2.getText();
+			int text1= Integer.parseInt(Stext);
+			int text2= Integer.parseInt(Stext2);
+			int product= text1* text2;
+			label.setText("product: " + product);
+			frame.pack();
+			
+		}
+		else if (button4 == e.getSource()) {
+			String Stext= textField1.getText();
+			String Stext2= textField2.getText();
+			int text1= Integer.parseInt(Stext);
+			int text2= Integer.parseInt(Stext2);
+			int quotent= text1/ text2;
+			label.setText("quotent: " + quotent);
+			frame.pack();
+			
+		}
+		
 		
 	}
 	
