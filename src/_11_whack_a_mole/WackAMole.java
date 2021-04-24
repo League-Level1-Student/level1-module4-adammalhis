@@ -14,19 +14,21 @@ public class WackAMole implements ActionListener {
 	JFrame frame= new JFrame();
 	JPanel panel= new JPanel();
 	Random bob= new Random();
-	int bob2= bob.nextInt(24);
+	int bob2;
 	JButton[] buttons= new JButton[24];
 	int buttonNumber;
 	
 	
 	
 	void mole() {
-		for (int a=0; a<=0; i++) {
+		bob2= bob.nextInt(24);
+		panel.removeAll();
 		frame.add(panel);
 		frame.setVisible(true);
 		frame.setPreferredSize(new Dimension(300, 500));
 		drawButtons(bob2);
-		}
+	
+		
 		
 		
 	}
@@ -37,7 +39,9 @@ public class WackAMole implements ActionListener {
 			buttons[i]= new JButton();
 			buttons[i].setPreferredSize(new Dimension(90, 45));
 			buttons[i].addActionListener(this);
-			
+			if (i==x ) {
+				buttons[i].setText("mole");
+			}
 			panel.add(buttons[i]);
 			
 			
@@ -49,14 +53,17 @@ public class WackAMole implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		buttons[bob2].setText("mole");
 		if (e.getSource() != buttons[bob2]) {
 			speak("missed");
+			buttonNumber= buttonNumber + 1;
+		}
+		if (buttonNumber==10) {
+			speak("YOU LOOSE!");
 		}
 		frame.dispose();
-		
-		
-	}
+		mole();
+	}	
+	
 	
 	
 	
